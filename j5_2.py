@@ -12,6 +12,9 @@ while len(frontier):
     r, c = frontier.pop()
     searched.add((r, c))
 
+    if field[r][c] == "*":
+        continue
+
     if r + 1 < R and (r + 1, c) not in searched:
         frontier.add((r + 1, c))
     if r - 1 >= 0 and (r - 1, c) not in searched:
@@ -29,24 +32,3 @@ while len(frontier):
         total += 10
 
 print(total)
-
-# def search(r, c, searched = set()):
-#     total = 0
-
-#     if (r, c) in searched or field[r][c] == '*':
-#         pass
-#     else:
-#         searched.add((r, c))
-
-#         if field[r][c] == 'S': total += 1
-#         elif field[r][c] == 'M': total += 5
-#         elif field[r][c] == 'L': total += 10
-
-#         if r + 1 < R: total += search(r + 1, c, searched)
-#         if c + 1 < C: total += search(r, c + 1, searched)
-#         if r - 1 >= 0: total += search(r - 1, c, searched)
-#         if c - 1 >= 0: total += search(r, c - 1, searched)
-
-#     return total
-
-# print(search(r, c))
